@@ -349,7 +349,7 @@ def main():
 		state = env.reset()
 		
 		while not done:
-			if args.render:
+			if args.render == 'True':
 				env.render()
 			start_time = time.time()
 			if args.start_steps > total_numsteps:
