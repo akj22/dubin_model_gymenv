@@ -22,6 +22,8 @@ parser.add_argument('--policy', default="Gaussian",
                     help='Policy Type: Gaussian | Deterministic (default: Gaussian)')
 parser.add_argument('--eval', type=bool, default=True,
                     help='Evaluates a policy a policy every 10 episode (default: True)')
+parser.add_argument('--render', type=bool, default=True,
+                    help='Render environment (default: True)')
 parser.add_argument('--gamma', type=float, default=0.99, metavar='G',
                     help='discount factor for reward (default: 0.99)')
 parser.add_argument('--tau', type=float, default=0.005, metavar='G',
@@ -347,7 +349,8 @@ def main():
 		state = env.reset()
 		
 		while not done:
-			env.render()
+			if args.render:
+				env.render()
 			start_time = time.time()
 			if args.start_steps > total_numsteps:
 				action = env.action_space.sample()  # Sample random action
